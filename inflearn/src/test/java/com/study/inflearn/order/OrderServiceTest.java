@@ -3,6 +3,8 @@ package com.study.inflearn.order;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.study.inflearn.AppConfig;
 import com.study.inflearn.member.Grade;
@@ -16,9 +18,13 @@ public class OrderServiceTest {
 
 	@BeforeEach
 	public void beforeEach() {
-		AppConfig appConfig = new AppConfig();
-		this.memberService = appConfig.memberService();
-		this.orderService = appConfig.orderService();
+//		AppConfig appConfig = new AppConfig();
+//		this.memberService = appConfig.memberService();
+//		this.orderService = appConfig.orderService();
+
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		this.memberService = context.getBean("memberService", MemberService.class);
+		this.orderService = context.getBean("orderService", OrderService.class);
 	}
 
 	@Test
