@@ -1,12 +1,12 @@
-package com.study.inflearn;
+package com.study.inflearn.member;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.study.inflearn.member.Grade;
-import com.study.inflearn.member.Member;
-import com.study.inflearn.member.MemberService;
+import com.study.inflearn.AppConfig;
 
 public class MemberServiceTest {
 
@@ -14,8 +14,8 @@ public class MemberServiceTest {
 
 	@BeforeEach
 	public void beforeEach() {
-		AppConfig appConfig = new AppConfig();
-		this.memberService = appConfig.memberService();
+		ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+		memberService = ctx.getBean("memberService", MemberService.class);
 	}
 
 	@Test
