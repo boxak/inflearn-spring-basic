@@ -20,22 +20,22 @@ import com.study.inflearn.order.OrderServiceImpl;
 public class AppConfig {
 	// 생성자 주입
 	@Bean
-	MemberService memberService() {
+	public MemberService memberService() {
 		return new MemberServiceImpl(memberRepository());
 	}
 
 	@Bean
-	OrderService orderService() {
+	public OrderService orderService() {
 		return new OrderServiceImpl(memberRepository(), discountPolicy());
 	}
 
 	@Bean
-	MemberRepository memberRepository() {
+	public MemberRepository memberRepository() {
 		return new MemoryMemberRepository();
 	}
 
 	@Bean
-	DiscountPolicy discountPolicy() {
+	public DiscountPolicy discountPolicy() {
 //		return new FixDiscountPolicy();
 		return new RateDiscountPolicy();
 	}
