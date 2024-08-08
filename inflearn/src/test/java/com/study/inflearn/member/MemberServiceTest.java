@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.study.inflearn.AppConfig;
@@ -16,6 +17,8 @@ public class MemberServiceTest {
 	public void beforeEach() {
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 		memberService = ctx.getBean("memberService", MemberService.class);
+
+		((ConfigurableApplicationContext) ctx).close();
 	}
 
 	@Test

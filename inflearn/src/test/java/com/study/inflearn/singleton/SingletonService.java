@@ -1,4 +1,4 @@
-package singleton;
+package com.study.inflearn.singleton;
 
 public class SingletonService {
 

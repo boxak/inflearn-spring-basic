@@ -1,9 +1,11 @@
-package singleton;
+package com.study.inflearn.singleton;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.study.inflearn.AppConfig;
 import com.study.inflearn.member.MemberService;
@@ -41,5 +43,21 @@ public class SingletonTest {
 
 		// isSameAs : ==
 		// isEqualTo : equals
+	}
+
+	@Test
+	@DisplayName("스프링 컨테이너와 싱글톤")
+	void springContainer() {
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+
+		MemberService memberService1 = ctx.getBean("memberService", MemberService.class);
+		MemberService memberService2 = ctx.getBean("memberService", MemberService.class);
+
+		System.out.println("memberService1 = " + memberService1);
+		System.out.println("memberService2 = " + memberService2);
+
+		assertThat(memberService1).isSameAs(memberService2);
+
+		((ConfigurableApplicationContext) ctx).close();
 	}
 }

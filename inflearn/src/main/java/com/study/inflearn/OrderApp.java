@@ -1,6 +1,7 @@
 package com.study.inflearn;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.study.inflearn.member.Grade;
@@ -29,5 +30,7 @@ public class OrderApp {
 
 		System.out.println("order = " + order);
 		System.out.println("order.caclulatePrice = " + order.calculatePrice());
+
+		((ConfigurableApplicationContext) context).close();
 	}
 }
