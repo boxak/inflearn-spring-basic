@@ -19,9 +19,9 @@ public class OrderServiceTest {
 
 	@BeforeEach
 	public void beforeEach() {
-//		AppConfig appConfig = new AppConfig();
-//		this.memberService = appConfig.memberService();
-//		this.orderService = appConfig.orderService();
+		//		AppConfig appConfig = new AppConfig();
+		//		this.memberService = appConfig.memberService();
+		//		this.orderService = appConfig.orderService();
 
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		this.memberService = context.getBean("memberService", MemberService.class);
@@ -41,4 +41,10 @@ public class OrderServiceTest {
 
 		Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
 	}
+
+	//	@Test
+	//	void fieldInjectionTest() {
+	//		OrderServiceImpl orderService = new OrderServiceImpl();
+	//		orderService.createOrder(1L, "itemA", 10000);
+	//	}
 }

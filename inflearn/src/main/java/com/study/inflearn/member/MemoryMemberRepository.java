@@ -3,8 +3,10 @@ package com.study.inflearn.member;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+@Primary
 @Component
 public class MemoryMemberRepository implements MemberRepository {
 
